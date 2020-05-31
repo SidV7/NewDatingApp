@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 // Components
 import { AppComponent } from './app.component';
@@ -11,6 +13,7 @@ import { RegisterComponent } from './register/register.component';
 
 // Services
 import { AuthService } from './_services/auth.service';
+import { ErrorInterceptorProvider } from './_services/error.interceptor';
 
 
 @NgModule({
@@ -23,10 +26,13 @@ import { AuthService } from './_services/auth.service';
    imports: [
       BrowserModule,
       HttpClientModule,
-      FormsModule
+      FormsModule,
+      BrowserAnimationsModule,
+      BsDropdownModule.forRoot()
    ],
    providers: [
-      AuthService
+      AuthService,
+      ErrorInterceptorProvider
    ],
    bootstrap: [
       AppComponent
